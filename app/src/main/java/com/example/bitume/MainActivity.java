@@ -2,6 +2,7 @@ package com.example.bitume;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -26,6 +27,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(clickedButton.getId()==R.id.env1){
             Loot l = new Loot();
             Log.d("DEBUG",l.toString());
+            showDialog(l);
+
         }
+    }
+
+    public void showDialog(Loot loot){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Loot");
+        builder.setMessage(loot.toString());
+        //builder.setPositiveButton("OK", (dialogInterface, i) ->actionSuite(score));
+        builder.show();
+        onPause();
     }
 }
