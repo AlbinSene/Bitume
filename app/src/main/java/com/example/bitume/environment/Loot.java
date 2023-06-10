@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 
 import java.util.Random;
 
-//classe representant le contenu du loot
+//classe representant le contenu du loot des ressources
 public class Loot {
     private int food;
     private int water;
@@ -14,24 +14,22 @@ public class Loot {
     private int ammo;
     private int generic;
 
-    public Loot(){
-        generateRessource();
+    public Loot(int low, int high){
+        generateRessource(low, high);
 
     }
 
     //genere le nombre de ressource lootee
-    private void generateRessource(){
+    private void generateRessource(int low, int high){
         Random r = new Random();
-        int low = 1;
-        int high = 6;
+        low = 1;
+        high = 6;
         int result = r.nextInt(high-low) + low;
-        Log.d("DEBUG","rand " + result);
 
         for (int i=0 ; i<result ; i++){
             low = 0;
             high = 100;
             int random = r.nextInt(high-low) + low;
-            Log.d("DEBUG","result " + random);
             repartRessource(random);
         }
     }
@@ -61,6 +59,6 @@ public class Loot {
     @Override
     public String toString() {
 
-        return "Vivres : " + food + " Eau : " + water + " Carburant : " + fuel + " Munition " + ammo + " Bric a brac : " + generic;
+        return "Vivres : " + food + "\nEau : " + water + "\nCarburant : " + fuel + "\nMunition " + ammo + "\nBric a brac : " + generic;
     }
 }
