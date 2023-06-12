@@ -1,11 +1,15 @@
 package com.example.bitume.environment;
 
+import android.content.Context;
 import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -16,6 +20,8 @@ public abstract class Environment {
     Loot loot; //loot de ressources
     int ressLow; //limite basse de ressources trouvable (inclue)
     int ressHigh; //limite haute de ressources trouvable (exclue)
+
+    String jsonString; //fichiers json convertis en String
 
     ArrayList<String> listItemsNr1 = new ArrayList<>(); //liste des items trouvables dans l'environnement
     ArrayList<String> listItemsNr2 = new ArrayList<>();
@@ -32,9 +38,9 @@ public abstract class Environment {
         return this.toString();
     }
 
-    protected void loadList() throws JSONException {
-        String testjson = "{nr1:[item1,item2],nr2:[item3,item4],nr3:[item5]}";
-        JSONObject jObject = new JSONObject(testjson);
+
+    public void loadList() throws JSONException {
+        JSONObject jObject = new JSONObject(jsonString);
 
         JSONArray jArray1 = jObject.getJSONArray("nr1");
         for (int i=0; i < jArray1.length(); i++){
@@ -94,6 +100,13 @@ public abstract class Environment {
     public String toString(){
         return loot.toString() + "\n" + itemLoot.toString();
     }
+
+    public void setJsonString(String s){
+        this.jsonString = s;
+    }
+
+
+
 
 
 
