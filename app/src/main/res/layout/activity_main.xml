@@ -22,20 +22,23 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="env1"
+            android:text="Meuble"
+            android:layout_centerHorizontal="true"
             android:id="@+id/env1"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="env2"
+            android:text="Pièce"
+            android:layout_centerHorizontal="true"
             android:id="@+id/env2"
             android:layout_below="@id/env1"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="env3"
+            android:text="Bâtiment"
+            android:layout_centerHorizontal="true"
             android:id="@+id/env3"
             android:layout_below="@+id/env2"/>
     </RelativeLayout>

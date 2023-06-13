@@ -9,7 +9,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.bitume.environment.Building;
 import com.example.bitume.environment.Environment;
+import com.example.bitume.environment.Furniture;
 import com.example.bitume.environment.Loot;
 import com.example.bitume.environment.Room;
 
@@ -20,7 +22,10 @@ import java.io.InputStream;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
+    Environment furniture = new Furniture();
     Environment room = new Room();
+    Environment building = new Building();
+
 
     public MainActivity() throws JSONException {
     }
@@ -38,9 +43,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         env2.setOnClickListener((View.OnClickListener) this);
         env3.setOnClickListener((View.OnClickListener) this);
 
-        room.setJsonString(loadJSONFromAsset(this));
+        //recuperation des json pour chaque environnement
+        furniture.setJsonString(loadJSONFromAsset(this,"furniture.json"));
+        room.setJsonString(loadJSONFromAsset(this,"room.json"));
+        building.setJsonString(loadJSONFromAsset(this,"building.json"));
+
+        //chargement des donnees du json dans une liste
         try {
+            furniture.loadList();
             room.loadList();
+            building.loadList();
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
@@ -51,14 +63,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view){
         Button clickedButton = (Button) view;
         if(clickedButton.getId()==R.id.env1){
-            String l = room.search();
+            String l = furniture.search();
             showDialog(l);
         }
         else if (clickedButton.getId()==R.id.env2){
-
+            String l = room.search();
+            showDialog(l);
         }
         else if (clickedButton.getId()==R.id.env3){
-
+            String l = building.search();
+            showDialog(l);
         }
     }
 
@@ -72,10 +86,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     //Lecture d'un fichier json
-    public String loadJSONFromAsset(Context context) {
+    public String loadJSONFromAsset(Context context,String fileName) {
         String json = null;
         try {
-            InputStream is = context.getAssets().open("test.json");
+            InputStream is = context.getAssets().open(fileName);
 
             int size = is.available();
 

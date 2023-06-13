@@ -26,6 +26,8 @@ public abstract class Environment {
     ArrayList<String> listItemsNr1 = new ArrayList<>(); //liste des items trouvables dans l'environnement
     ArrayList<String> listItemsNr2 = new ArrayList<>();
     ArrayList<String> listItemsNr3 = new ArrayList<>();
+
+    int nr0; //proba de rien trouver
     int nr1; //proba de trouver selon chaque rarete
     int nr2;
     int nr3;
@@ -38,7 +40,7 @@ public abstract class Environment {
         return this.toString();
     }
 
-
+    //recupere les items selon leur rarete et les ajoute dans des listes
     public void loadList() throws JSONException {
         JSONObject jObject = new JSONObject(jsonString);
 
@@ -72,14 +74,17 @@ public abstract class Environment {
         int result = r.nextInt(high-low) + low;
         Log.d("DEBUG","random : " + result);
 
-        if (result < nr1){
+        if (result < nr0){
+
+        }
+        else if (result < nr0+nr1){
             low=0;
             high=listItemsNr1.size();
             result = r.nextInt(high-low) + low;
 
             itemLoot = new ItemLoot(listItemsNr1.get(result),1);
         }
-        else if (result < nr1+nr2) {
+        else if (result < nr0+nr1+nr2) {
             low=0;
             high=listItemsNr2.size();
             result = r.nextInt(high-low) + low;
