@@ -14,6 +14,13 @@ public class Loot {
     private int ammo;
     private int generic;
 
+    //proba de loot de chaque type de ressource
+    private int probFood = 19;
+    private int probWater = 19;
+    private int probFuel = 17;
+    private int probAmmo = 13;
+    private int probGeneric = 32;
+
     public Loot(int low, int high){
         generateRessource(low, high);
 
@@ -36,16 +43,16 @@ public class Loot {
 
     //repartie les ressources en fonction des proba
     private void repartRessource(int proba){
-        if (proba < 31){
+        if (proba < probGeneric){
             generic++;
         }
-        else if (proba < 49){
+        else if (proba < probGeneric+probWater){
             water++;
         }
-        else if (proba < 68){
+        else if (proba < probGeneric+probWater+probFood){
             food++;
         }
-        else if (proba < 86){
+        else if (proba < probGeneric+probWater+probFood+probFuel){
             fuel++;
         }
         else {
