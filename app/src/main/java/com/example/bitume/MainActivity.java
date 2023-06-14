@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Environment building = new Building();
 
 
-    public MainActivity() throws JSONException {
+    public MainActivity() {
     }
 
     @Override
