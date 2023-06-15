@@ -4,7 +4,7 @@ public class Furniture extends Environment{
 
     public Furniture(){
         this.ressLow = 0;
-        this.ressHigh = 6;
+        this.ressHigh = 20;
 
         this.nr0 = 0;
         this.nr1 = 60;

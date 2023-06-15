@@ -26,6 +26,7 @@
             android:layout_height="wrap_content"
             android:text="Meuble"
             android:layout_centerHorizontal="true"
+            android:backgroundTint="@color/brown"
             android:id="@+id/env1"/>
 
         <Button
@@ -33,6 +34,7 @@
             android:layout_height="wrap_content"
             android:text="Pièce"
             android:layout_centerHorizontal="true"
+            android:backgroundTint="@color/brown"
             android:id="@+id/env2"
             android:layout_below="@id/env1"/>
 
@@ -41,6 +43,7 @@
             android:layout_height="wrap_content"
             android:text="Bâtiment"
             android:layout_centerHorizontal="true"
+            android:backgroundTint="@color/brown"
             android:id="@+id/env3"
             android:layout_below="@+id/env2"/>
     </RelativeLayout>

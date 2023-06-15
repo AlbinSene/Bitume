@@ -15,11 +15,11 @@ public class Loot {
     private int generic;
 
     //proba de loot de chaque type de ressource
-    private int probFood = 19;
-    private int probWater = 19;
-    private int probFuel = 17;
-    private int probAmmo = 13;
-    private int probGeneric = 32;
+    private int probFood = 15;
+    private int probWater = 15;
+    private int probFuel = 10;
+    private int probAmmo = 10;
+    private int probGeneric = 50;
 
     public Loot(int low, int high){
         generateRessource(low, high);
@@ -29,8 +29,6 @@ public class Loot {
     //genere le nombre de ressource lootee
     private void generateRessource(int low, int high){
         Random r = new Random();
-        low = 1;
-        high = 6;
         int result = r.nextInt(high-low) + low;
 
         for (int i=0 ; i<result ; i++){
