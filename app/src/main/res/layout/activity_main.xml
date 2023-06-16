@@ -14,7 +14,8 @@
         android:text="Loot Bitume"
         android:layout_centerHorizontal="true"
         android:textStyle="bold"
-        android:textSize="30dp"/>
+        android:textSize="30dp"
+        android:fontFamily="@font/font_crackhouse"/>
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -25,6 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Meuble"
+            android:fontFamily="@font/font_gorrisans"
             android:layout_centerHorizontal="true"
             android:backgroundTint="@color/brown"
             android:id="@+id/env1"/>
@@ -33,6 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Pièce"
+            android:fontFamily="@font/font_gorrisans"
             android:layout_centerHorizontal="true"
             android:backgroundTint="@color/brown"
             android:id="@+id/env2"
@@ -42,6 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Bâtiment"
+            android:fontFamily="@font/font_gorrisans"
             android:layout_centerHorizontal="true"
             android:backgroundTint="@color/brown"
             android:id="@+id/env3"

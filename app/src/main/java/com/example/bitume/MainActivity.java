@@ -4,10 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.SpannableStringBuilder;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.bitume.environment.Building;
 import com.example.bitume.environment.Environment;
@@ -79,10 +83,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void showDialog(String loot){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Loot");
-        builder.setMessage(loot);
+        //builder.setMessage(loot);
+        builder.setView(createMessageView(loot,this));
         //builder.setPositiveButton("OK", (dialogInterface, i) ->actionSuite(score));
+
+
+
         builder.show();
         onPause();
+    }
+
+    public static TextView createMessageView(String message, Context context) {
+        TextView messageView = (TextView) LayoutInflater.from(context).inflate(R.layout.alert_dialog_loot, null, false);
+        messageView.setText(message);
+        return messageView;
     }
 
     //Lecture d'un fichier json
