@@ -6,7 +6,9 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
+import android.text.style.RelativeSizeSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,7 +63,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             throw new RuntimeException(e);
         }
 
-
     }
 
     public void onClick(View view){
@@ -82,20 +83,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void showDialog(String loot){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Loot");
-        //builder.setMessage(loot);
         builder.setView(createMessageView(loot,this));
         //builder.setPositiveButton("OK", (dialogInterface, i) ->actionSuite(score));
-
-
 
         builder.show();
         onPause();
     }
 
+    //cree une view a appliquer dans une alert dialog
     public static TextView createMessageView(String message, Context context) {
         TextView messageView = (TextView) LayoutInflater.from(context).inflate(R.layout.alert_dialog_loot, null, false);
-        messageView.setText(message);
+
+        SpannableString ss1 =  new SpannableString("Résultat de la fouille :\n\n" +  message);
+        ss1.setSpan(new RelativeSizeSpan(1.5f), 0,24, 0); // set size
+
+        messageView.setText(ss1);
         return messageView;
     }
 
